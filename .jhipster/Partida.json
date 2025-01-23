@@ -1,0 +1,35 @@
+{
+  "annotations": {
+    "changelogDate": "20250123012449"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "data",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "local",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pontuacaoTime1",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "pontuacaoTime2",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Partida",
+  "relationships": [
+    {
+      "otherEntityName": "time",
+      "relationshipName": "times",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

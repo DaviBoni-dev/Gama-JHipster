@@ -1,0 +1,40 @@
+{
+  "annotations": {
+    "changelogDate": "20250123012450"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "pontos",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "rebotes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "assistencias",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "faltas",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Estatistica",
+  "relationships": [
+    {
+      "otherEntityName": "jogador",
+      "relationshipName": "jogador",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "partida",
+      "relationshipName": "partida",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-time-heading" data-cy="TimeCreateUpdateHeading">Create or edit a Time</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let nomeRef = editForm.get('nome')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_nome">Nome</label>
+          <input type="text" class="form-control" name="nome" id="field_nome" data-cy="nome" formControlName="nome" />
+          @if (nomeRef.invalid && (nomeRef.dirty || nomeRef.touched)) {
+            <div>
+              @if (editForm.get('nome')?.errors?.required) {
+                <small class="form-text text-danger">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cidade">Cidade</label>
+          <input type="text" class="form-control" name="cidade" id="field_cidade" data-cy="cidade" formControlName="cidade" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vitorias">Vitorias</label>
+          <input type="number" class="form-control" name="vitorias" id="field_vitorias" data-cy="vitorias" formControlName="vitorias" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_derrotas">Derrotas</label>
+          <input type="number" class="form-control" name="derrotas" id="field_derrotas" data-cy="derrotas" formControlName="derrotas" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_empates">Empates</label>
+          <input type="number" class="form-control" name="empates" id="field_empates" data-cy="empates" formControlName="empates" />
+        </div>
+
+        <div class="mb-3">
+          <label for="field_partidas">Partida</label>
+          <select
+            class="form-control"
+            id="field_partidas"
+            data-cy="partida"
+            multiple
+            name="partidas"
+            formControlName="partidas"
+            [compareWith]="comparePartida"
+          >
+            @for (partidaOption of partidasSharedCollection; track $index) {
+              <option [ngValue]="partidaOption">{{ partidaOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "annotations": {
+    "changelogDate": "20250123012448"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "posicao",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "numeroCamisa",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Jogador",
+  "relationships": [
+    {
+      "otherEntityName": "time",
+      "relationshipName": "time",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

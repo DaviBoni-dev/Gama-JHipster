@@ -1,0 +1,53 @@
+entity Time {
+    nome String required,
+    cidade String,
+    vitorias Integer,
+    derrotas Integer,
+    empates Integer
+}
+
+entity Jogador {
+    nome String required,
+    posicao String,
+    numeroCamisa Integer
+}
+
+entity Partida {
+    data LocalDate required,
+    local String,
+    pontuacaoTime1 Integer,
+    pontuacaoTime2 Integer
+}
+
+entity Estatistica {
+    pontos Integer,
+    rebotes Integer,
+    assistencias Integer,
+    faltas Integer
+}
+
+entity Campeonato {
+    nome String required,
+    descricao String maxlength(1000),
+    dataInicio LocalDate,
+    dataFim LocalDate
+}
+
+// Relacionamentos
+relationship ManyToOne {
+    Jogador{time} to Time
+}
+
+relationship ManyToMany {
+    Partida{times} to Time
+}
+
+relationship OneToMany {
+    Campeonato{partidas} to Partida
+}
+
+relationship ManyToOne {
+    Estatistica{jogador} to Jogador,
+    Estatistica{partida} to Partida
+}
+

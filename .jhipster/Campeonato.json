@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20250123012451"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1000"
+    },
+    {
+      "fieldName": "dataInicio",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dataFim",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "name": "Campeonato",
+  "relationships": [
+    {
+      "otherEntityName": "partida",
+      "relationshipName": "partidas",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

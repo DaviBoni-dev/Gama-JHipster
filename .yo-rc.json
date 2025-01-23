@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "CaseGamaJhipster",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "angular",
+    "clientTestFrameworks": [],
+    "clientTheme": "none",
+    "creationTimestamp": 1737593830290,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": true,
+    "enableTranslation": false,
+    "entities": ["Time", "Jogador", "Partida", "Estatistica", "Campeonato"],
+    "feignClient": null,
+    "jhipsterVersion": "8.8.0",
+    "jwtSecretKey": "N2Y3OWFlMzFiYmNmNGNlNzMxYzc5ODVmZjU0ODc0MmUxZmNjNTM5OWE1ZDI4MGZmZWMwOTdmZmRkNmExMGU4ZmVmNDZmZjVkNTU4ZWFhMWUyMDU5OTQ3MjJkNmI3NDMyMjZmNDgzOTQ0ZTk4OWFiYmRhNTc5OGZlMWM0MGIyODU=",
+    "lastLiquibaseTimestamp": 1737595491000,
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "en",
+    "packageName": "dev.daviboni",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": true
+  }
+}

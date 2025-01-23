@@ -1,0 +1,122 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-partida-heading" data-cy="PartidaCreateUpdateHeading">Create or edit a Partida</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let dataRef = editForm.get('data')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_data">Data</label>
+          <div class="input-group">
+            <input
+              id="field_data"
+              data-cy="data"
+              type="text"
+              class="form-control"
+              name="data"
+              ngbDatepicker
+              #dataDp="ngbDatepicker"
+              formControlName="data"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (dataRef.invalid && (dataRef.dirty || dataRef.touched)) {
+            <div>
+              @if (editForm.get('data')?.errors?.required) {
+                <small class="form-text text-danger">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_local">Local</label>
+          <input type="text" class="form-control" name="local" id="field_local" data-cy="local" formControlName="local" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pontuacaoTime1">Pontuacao Time 1</label>
+          <input
+            type="number"
+            class="form-control"
+            name="pontuacaoTime1"
+            id="field_pontuacaoTime1"
+            data-cy="pontuacaoTime1"
+            formControlName="pontuacaoTime1"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_pontuacaoTime2">Pontuacao Time 2</label>
+          <input
+            type="number"
+            class="form-control"
+            name="pontuacaoTime2"
+            id="field_pontuacaoTime2"
+            data-cy="pontuacaoTime2"
+            formControlName="pontuacaoTime2"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="field_times">Times</label>
+          <select
+            class="form-control"
+            id="field_times"
+            data-cy="times"
+            multiple
+            name="times"
+            formControlName="times"
+            [compareWith]="compareTime"
+          >
+            @for (timeOption of timesSharedCollection; track $index) {
+              <option [ngValue]="timeOption">{{ timeOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_campeonato">Campeonato</label>
+          <select
+            class="form-control"
+            id="field_campeonato"
+            data-cy="campeonato"
+            name="campeonato"
+            formControlName="campeonato"
+            [compareWith]="compareCampeonato"
+          >
+            <option [ngValue]="null"></option>
+            @for (campeonatoOption of campeonatoesSharedCollection; track $index) {
+              <option [ngValue]="campeonatoOption">{{ campeonatoOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

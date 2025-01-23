@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (campeonato(); as campeonatoRef) {
+      <div>
+        <h2 data-cy="campeonatoDetailsHeading"><span>Campeonato</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ campeonatoRef.id }}</span>
+          </dd>
+          <dt><span>Nome</span></dt>
+          <dd>
+            <span>{{ campeonatoRef.nome }}</span>
+          </dd>
+          <dt><span>Descricao</span></dt>
+          <dd>
+            <span>{{ campeonatoRef.descricao }}</span>
+          </dd>
+          <dt><span>Data Inicio</span></dt>
+          <dd>
+            <span>{{ campeonatoRef.dataInicio | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Data Fim</span></dt>
+          <dd>
+            <span>{{ campeonatoRef.dataFim | formatMediumDate }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/campeonato', campeonatoRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

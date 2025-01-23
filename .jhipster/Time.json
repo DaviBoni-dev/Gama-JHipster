@@ -1,0 +1,32 @@
+{
+  "annotations": {
+    "changelogDate": "20250123012447"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cidade",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vitorias",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "derrotas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "empates",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Time",
+  "relationships": [],
+  "searchEngine": "no"
+}

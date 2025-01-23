@@ -1,0 +1,62 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (estatistica(); as estatisticaRef) {
+      <div>
+        <h2 data-cy="estatisticaDetailsHeading"><span>Estatistica</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ estatisticaRef.id }}</span>
+          </dd>
+          <dt><span>Pontos</span></dt>
+          <dd>
+            <span>{{ estatisticaRef.pontos }}</span>
+          </dd>
+          <dt><span>Rebotes</span></dt>
+          <dd>
+            <span>{{ estatisticaRef.rebotes }}</span>
+          </dd>
+          <dt><span>Assistencias</span></dt>
+          <dd>
+            <span>{{ estatisticaRef.assistencias }}</span>
+          </dd>
+          <dt><span>Faltas</span></dt>
+          <dd>
+            <span>{{ estatisticaRef.faltas }}</span>
+          </dd>
+          <dt><span>Jogador</span></dt>
+          <dd>
+            @if (estatistica()!.jogador) {
+              <div>
+                <a [routerLink]="['/jogador', estatistica()!.jogador?.id, 'view']">{{ estatisticaRef.jogador?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Partida</span></dt>
+          <dd>
+            @if (estatistica()!.partida) {
+              <div>
+                <a [routerLink]="['/partida', estatistica()!.partida?.id, 'view']">{{ estatisticaRef.partida?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/estatistica', estatisticaRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
